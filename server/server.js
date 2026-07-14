@@ -114,8 +114,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Backend server started successfully on port ${PORT}.`);
 });
-
-
-// फ्रंटएंड की HTML, CSS और JS फाइलों को सर्वर से लाइव जोड़ना
-const path = require('path');
-app.use('/client', express.static(path.join(__join, '../client')));
