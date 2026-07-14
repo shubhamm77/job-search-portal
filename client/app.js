@@ -1,7 +1,7 @@
 console.log("App.js successfully loaded!");
 
 // Backend server URL running on port 5000
-const API_URL = 'http://localhost:5000/api/jobs';
+const API_URL = 'https://job-search-portal-fnl4.onrender.com';
 
 // Fetch data as soon as the page loads
 document.addEventListener('DOMContentLoaded', () => {
