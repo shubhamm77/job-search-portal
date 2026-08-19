@@ -10,12 +10,13 @@ app.use(cors()); // Allows frontend to communicate with backend
 app.use(express.json()); // Helps server to read JSON data
 
 // MySQL database connection settings (fetching data from .env file)
-const db = mysql.createConnection({
+/*const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
-});
+});*/
+const db=mysql.createConnection(process.env.DB);
 
 // Connecting to the database
 db.connect((err) => {
