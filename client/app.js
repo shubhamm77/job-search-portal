@@ -1,7 +1,7 @@
 console.log("App.js successfully loaded!");
 
 // Backend server URL running on port 5000
-const API_URL = 'https://job-search-portal-fnl4.onrender.com/api/jobs';
+const API_URL = 'https://job-search-portal-fnl4.onrender.com';
 
 // Fetch data as soon as the page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +21,7 @@ async function fetchJobs() {
     if (!jobListContainer) return;
     
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/api/jobs`);
         const jobs = await response.json();
         
         if (jobs.length === 0) {
@@ -81,7 +81,7 @@ async function handleFormSubmit(e) {
     const newJob = { title, company, location, salary, description };
     
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(`${API_URL}/api/jobs`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -132,7 +132,7 @@ if (applyForm) {
         const newApplication = { job_id, student_name, student_email };
         
         try {
-            const response = await fetch('http://localhost:5000/api/applications', {
+            const response = await fetch(`${API_URL}/api/applications`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ async function fetchApplicants() {
     if (!applicantsContainer) return;
     
     try {
-        const response = await fetch('http://localhost:5000/api/applicants');
+        const response = await fetch(`${API_URL}/api/applicants`);
         const applicants = await response.json();
         
         if (applicants.length === 0) {
@@ -205,7 +205,7 @@ async function deleteJob(jobId) {
     }
     
     try {
-        const response = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
+        const response = await fetch(`${API_URL}/api/jobs/${jobId}`, {
             method: 'DELETE'
         });
         
