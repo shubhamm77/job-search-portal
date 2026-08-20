@@ -16,7 +16,7 @@ app.use(express.json()); // Helps server to read JSON data
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });*/
-const db=mysql.createConnection(process.env.DB);
+const db=mysql.createConnection(process.env.DATABASE_URL || process.env.DB);
 
 // Connecting to the database
 db.connect((err) => {
