@@ -16,7 +16,7 @@ app.use(express.json()); // Helps server to read JSON data
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });*/
-mysql://avnadmin:AVNS_dPPIYAJ2Ee5gw_1KyXz@mysql-d99e0c3-shubhamkum18616-8f2b.e.aivencloud.com:17362/defaultdb?ssl-mode=REQUIRED
+const db = mysql://avnadmin:AVNS_dPPIYAJ2Ee5gw_1KyXz@mysql-d99e0c3-shubhamkum18616-8f2b.e.aivencloud.com:17362/defaultdb?ssl-mode=REQUIRED
 
 // Connecting to the database
 // Connecting to the database और ऑटोमैटिक टेबल क्रिएशन लॉजिक
