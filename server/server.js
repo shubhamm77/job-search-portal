@@ -16,51 +16,14 @@ app.use(express.json()); // Helps server to read JSON data
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });*/
-const db = mysql.createConnection(mysql://avnadmin:AVNS_dPPIYAJ2Ee5gw_1KyXz@mysql-d99e0c3-shubhamkum18616-8f2b.e.aivencloud.com:17362/defaultdb?ssl-mode=REQUIRED);
-
+const db = mysql.createConnection(process.env.DB);
 // Connecting to the database
-// Connecting to the database और ऑटोमैटिक टेबल क्रिएशन लॉजिक
 db.connect((err) => {
     if (err) {
         console.error('Error connecting to the database: ' + err.stack);
         return;
     }
     console.log('MySQL database connected successfully!');
-
-    // 1. Jobs Table अपने आप बनाने की क्वेरी
-    const createJobsTable = `
-    CREATE TABLE IF NOT EXISTS jobs (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        company VARCHAR(255) NOT NULL,
-        location VARCHAR(255) NOT NULL,
-        salary VARCHAR(100) DEFAULT 'Not Disclosed',
-        description TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );`;
-
-    // 2. Applications Table अपने आप बनाने की क्वेरी
-    const createAppsTable = `
-    CREATE TABLE IF NOT EXISTS applications (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        job_id INT NOT NULL,
-        student_name VARCHAR(255) NOT NULL,
-        student_email VARCHAR(255) NOT NULL,
-        applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE
-    );`;
-
-    // टेबल्स को डेटाबेस में रन करना
-    db.query(createJobsTable, (err) => {
-        if (err) console.error('Error creating jobs table:', err);
-        else {
-            console.log('Jobs table is ready!');
-            db.query(createAppsTable, (err) => {
-                if (err) console.error('Error creating applications table:', err);
-                else console.log('Applications table is ready!');
-            });
-        }
-    });
 });
 
 // 1. API: Get all jobs (GET Request)
