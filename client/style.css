@@ -337,7 +337,8 @@ footer {
 
 
 /* new changes kiye hain */
-/* URL के हिसाब से बटन छुपाने का लॉजिक */
+/* URL ke hisab se  button hide krne  ka logic */
+
 body:not(:target) .delete-btn {
     display: none !important;
 }
