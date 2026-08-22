@@ -213,8 +213,8 @@ async function deleteJob(jobId) {
         
         if (response.ok) {
             alert('Success: ' + result.message);
-            fetchJobs();       // नौकरियों की लिस्ट को तुरंत अपडेट करना
-            fetchApplicants(); // आवेदकों की लिस्ट को भी तुरंत अपडेट करना
+            fetchJobs();       // Jobs ka list ko turat update krna
+            fetchApplicants(); // Applicants ka list ko bhi turat update krna 
         } else {
             alert('Error: ' + result.error);
         }
